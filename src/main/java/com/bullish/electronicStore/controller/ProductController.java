@@ -1,6 +1,7 @@
 package com.bullish.electronicStore.controller;
 
 import com.bullish.electronicStore.entity.Product;
+import com.bullish.electronicStore.repository.ProductRepository;
 import com.bullish.electronicStore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

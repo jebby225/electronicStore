@@ -13,9 +13,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-
     public List<Product> listProducts() {
-        productRepository.save(new Product("dryer", "dryer", 5.0, ""));
         return productRepository.findAll();
     }
 

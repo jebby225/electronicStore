@@ -19,6 +19,8 @@ public class Product {
     private @NotNull double price;
     private @NotNull String description;
 
+    Product() {}
+
     public Product(String name, String imageURL, double price, String description) {
         super();
         this.name = name;
