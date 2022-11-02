@@ -1,29 +1,44 @@
 package com.bullish.electronicStore.controller;
 
+import com.bullish.electronicStore.common.ApiResponse;
 import com.bullish.electronicStore.entity.Product;
 import com.bullish.electronicStore.repository.ProductRepository;
 import com.bullish.electronicStore.service.ProductService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping(path="/api/products", produces="application/json")
 public class ProductController {
 
     @Autowired
     ProductService productService;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Product>> getProducts() {
+    @GetMapping("/list")
+    public List<Product> getProducts() {
         List<Product> body = productService.listProducts();
-        return new ResponseEntity<List<Product>>(body, HttpStatus.OK);
+        String json = new Gson().toJson(body);
+
+        System.out.println("body" + json);
+        return body;
     }
+
+    @PostMapping("/add")
+    public Product addProduct(@RequestBody Product product) {
+        return productService.addProduct(product);
+    }
+
+    @DeleteMapping("/delete/{code}")
+    public void deleteProduct(@PathVariable String code){
+        productService.deleteProductByCode(code);
+    }
+
+
 
 }

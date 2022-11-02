@@ -1,11 +1,9 @@
 package com.bullish.electronicStore.entity;
 
+import jdk.jfr.DataAmount;
 import org.jetbrains.annotations.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Product {
@@ -14,15 +12,43 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private @NotNull String name;
-    private @NotNull String imageURL;
-    private @NotNull double price;
-    private @NotNull String description;
+    @Column(unique=true)
+    @NotNull
+    private String code;
+    @NotNull
+    private String name;
+    @NotNull
+    private String imageURL;
+    @NotNull
+    private double price;
+    @NotNull
+    private String description;
+
+    public String getCode(){
+        return code;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getImageURL(){
+        return imageURL;
+    }
+
+    public double getPrice(){
+        return price;
+    }
+
+    public String getDescription(){
+        return description;
+    }
 
     Product() {}
 
-    public Product(String name, String imageURL, double price, String description) {
+    public Product(String code, String name, String imageURL, double price, String description) {
         super();
+        this.code = code;
         this.name = name;
         this.imageURL = imageURL;
         this.price = price;
@@ -33,6 +59,7 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "id=" + id +
+                ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", imageURL='" + imageURL + '\'' +
                 ", price=" + price +
