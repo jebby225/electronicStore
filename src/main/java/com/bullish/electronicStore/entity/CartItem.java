@@ -20,6 +20,7 @@ public class CartItem {
 
     @ManyToOne
     @JsonIgnore
+    @Cascade(CascadeType.ALL)
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     private Cart cart;
 

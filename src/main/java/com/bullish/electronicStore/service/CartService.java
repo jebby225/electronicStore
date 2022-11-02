@@ -20,6 +20,9 @@ public class CartService {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private CartItemRepository cartItemRepository;
+
     public Cart listCarts(User user) {
         return cartRepository.findByUser(user);
     }
@@ -33,15 +36,35 @@ public class CartService {
             cart = new Cart(user);
             newCartItem.setCart(cart);
             user.setCart(cart);
+            cart.setUser(user);
+
+            CartItem saveCartItem = cartItemRepository.save(newCartItem);
 
             Set<CartItem> cartItemSet = new HashSet<>();
-            cartItemSet.add(newCartItem);
+            cartItemSet.add(saveCartItem);
 
             cart.setCartItems(cartItemSet);
 
             cartRepository.save(cart);
 
         } else {
+            CartItem findCartItem = cartItemRepository.findByCartAndProduct(cart, newCartItem.getProduct());
+
+            if(findCartItem != null) {
+                findCartItem.setQuantity(newCartItem.getQuantity());
+                cartItemRepository.save(findCartItem);
+            } else {
+                newCartItem.setCart(cart);
+
+                Set<CartItem> cartItemSet = cart.getCartItems();
+                cartItemSet.add(newCartItem);
+                cart.setCartItems(cartItemSet);
+
+                CartItem saveCartItem = cartItemRepository.save(newCartItem);
+            }
+
+
+/*
             List<CartItem> findItems = cart.getCartItems()
                     .stream()
                     .filter(p -> p.getProduct().getCode() == newCartItem.getProduct().getCode())
@@ -52,6 +75,7 @@ public class CartService {
             } else {
                 findItems.get(0).setQuantity(newCartItem.getQuantity());
             }
+            cartRepository.save(cart);*/
         }
 
         return cart;

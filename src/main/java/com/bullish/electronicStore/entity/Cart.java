@@ -24,10 +24,11 @@ public class Cart {
         return cartItems;
     }
 
-    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<CartItem> cartItems = new HashSet<>();
 
-    @OneToOne(mappedBy = "cart")
+    @OneToOne //(mappedBy = "cart")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 

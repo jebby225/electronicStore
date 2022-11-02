@@ -56,6 +56,9 @@ public class CartControllerTest {
 
         cartService.addToCart(user, new CartItem(user, product, 0));
         cartService.addToCart(user, new CartItem(user, product, 5));
+
+        Product product2 = productService.findByProductCode("cooker1");
+        cartService.addToCart(user, new CartItem(user, product2, 10));
     }
 
     @Test

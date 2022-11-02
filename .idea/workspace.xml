@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="561a6df3-c700-4133-b809-9addbd0f69f4" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/common/ApiResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/entity/Cart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/enums/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/enums/UserRoles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/exception/CustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/CartRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/LoadDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/LoadDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/entity/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/entity/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/entity/CartItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/CartItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/CartItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/CartControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/CartControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667035993669</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit">
+      <created>1667371504025</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667371504025</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -290,41 +284,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>23</line>
+          <line>26</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/CartControllerTest.java</url>
-          <line>80</line>
+          <line>83</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="29" />
+          <line>63</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="33" />
+          <line>62</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="34" />
+          <line>80</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="cartRepository" />
         <watch expression="cartRepository.findAll()" language="JAVA" />
+        <watch expression="cartRepository.findByUser(user)" language="JAVA" />
         <watch expression="cartRepository" />
+        <watch expression="cartRepository" />
+        <watch expression="cart.getCartItems()" />
+        <watch expression="cartItemRepository.findAll()" language="JAVA" />
       </configuration>
       <configuration name="Application">
         <watch expression="productRepository.findAll()" />
