@@ -1,9 +1,7 @@
 package com.bullish.electronicStore;
 
-import com.bullish.electronicStore.controller.ProductController;
 import com.bullish.electronicStore.controller.UserController;
-import com.bullish.electronicStore.entity.Product;
-import com.bullish.electronicStore.entity.User;
+import com.bullish.electronicStore.model.User;
 import com.bullish.electronicStore.enums.UserRoles;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

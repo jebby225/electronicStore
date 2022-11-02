@@ -1,11 +1,15 @@
-package com.bullish.electronicStore.entity;
+package com.bullish.electronicStore.model;
 
-import jdk.jfr.DataAmount;
+import com.bullish.electronicStore.converter.CartConverter;
+import com.bullish.electronicStore.converter.ProductDiscountConverter;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
-
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class Product {
 
     @Id
@@ -20,33 +24,16 @@ public class Product {
     @NotNull
     private String imageURL;
     @NotNull
-    private double price;
+    private Double price;
     @NotNull
     private String description;
 
-    public String getCode(){
-        return code;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public String getImageURL(){
-        return imageURL;
-    }
-
-    public double getPrice(){
-        return price;
-    }
-
-    public String getDescription(){
-        return description;
-    }
+    @Convert(converter = ProductDiscountConverter.class)
+    private ProductDiscount productDiscount;
 
     Product() {}
 
-    public Product(String code, String name, String imageURL, double price, String description) {
+    public Product(String code, String name, String imageURL, Double price, String description) {
         super();
         this.code = code;
         this.name = name;

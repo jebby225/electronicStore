@@ -1,16 +1,12 @@
 package com.bullish.electronicStore.service;
 
-import com.bullish.electronicStore.entity.Product;
-import com.bullish.electronicStore.entity.User;
-import com.bullish.electronicStore.enums.Status;
+import com.bullish.electronicStore.model.User;
 import com.bullish.electronicStore.enums.UserRoles;
 import com.bullish.electronicStore.exception.CustomException;
-import com.bullish.electronicStore.repository.ProductRepository;
 import com.bullish.electronicStore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @Service
@@ -21,14 +17,6 @@ public class UserService {
 
     public List<User> listAllUsers() {
         return userRepository.findAll();
-    }
-
-    public List<User> listAllAdmins() {
-        return userRepository.findByRole(UserRoles.ADMIN);
-    }
-
-    public List<User> listAllCustomers() {
-        return userRepository.findByRole(UserRoles.CUSTOMER);
     }
 
     public User addUser(User newUser) throws CustomException {

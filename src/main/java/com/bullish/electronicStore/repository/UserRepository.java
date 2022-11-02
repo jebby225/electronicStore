@@ -1,7 +1,6 @@
 package com.bullish.electronicStore.repository;
 
-import com.bullish.electronicStore.entity.User;
-import com.bullish.electronicStore.enums.Status;
+import com.bullish.electronicStore.model.User;
 import com.bullish.electronicStore.enums.UserRoles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

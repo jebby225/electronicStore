@@ -1,7 +1,8 @@
 package com.bullish.electronicStore.service;
 
-import com.bullish.electronicStore.entity.Product;
+import com.bullish.electronicStore.model.Product;
 import com.bullish.electronicStore.exception.CustomException;
+import com.bullish.electronicStore.model.ProductDiscount;
 import com.bullish.electronicStore.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,14 @@ public class ProductService {
 
     public Product addProduct(Product product) {
         return productRepository.save(product);
+    }
+
+    public Product addProductDiscount(int productId, ProductDiscount productDiscount) {
+        productDiscount.setPercent(true);
+        Product p = productRepository.findById(productId);
+        p.setProductDiscount(productDiscount);
+
+        return productRepository.save(p);
     }
 
     @Transactional

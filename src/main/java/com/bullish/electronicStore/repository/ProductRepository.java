@@ -1,6 +1,6 @@
 package com.bullish.electronicStore.repository;
 
-import com.bullish.electronicStore.entity.Product;
+import com.bullish.electronicStore.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

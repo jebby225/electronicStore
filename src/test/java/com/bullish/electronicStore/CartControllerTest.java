@@ -1,25 +1,14 @@
 package com.bullish.electronicStore;
 
-import com.bullish.electronicStore.controller.CartCotroller;
-import com.bullish.electronicStore.controller.CartItemController;
-import com.bullish.electronicStore.controller.ProductController;
-import com.bullish.electronicStore.entity.Cart;
-import com.bullish.electronicStore.entity.CartItem;
-import com.bullish.electronicStore.entity.Product;
-import com.bullish.electronicStore.entity.User;
-import com.bullish.electronicStore.enums.UserRoles;
+import com.bullish.electronicStore.model.Product;
+import com.bullish.electronicStore.model.User;
 import com.bullish.electronicStore.service.CartService;
 import com.bullish.electronicStore.service.ProductService;
 import com.bullish.electronicStore.service.UserService;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.*;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,7 +22,7 @@ public class CartControllerTest {
     @Autowired private CartService cartService;
     @Autowired private UserService userService;
     @Autowired private ProductService productService;
-    @Autowired private CartCotroller cartCotroller;
+    //@Autowired private CartCotroller cartCotroller;
 
     @Test
     public void testAddNewProductService() {
