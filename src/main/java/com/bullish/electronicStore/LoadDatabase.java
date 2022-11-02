@@ -31,12 +31,6 @@ class LoadDatabase {
             log.info("Preloading " + productRepository.save(new Product("cooker1", "cooker", "burglar", 4., "abx")));
             log.info("Preloading " + userRepository.save(user));
 
-
-        //    CartItem cartItem = new CartItem(user, product, 0);
-        //    user.setCartItems(Collections.singleton(cartItem));
-        //    log.info("Preloading " + cartItemRepository.save(cartItem));
-
-
         };
     }
 }

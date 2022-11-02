@@ -6,7 +6,6 @@ import org.jetbrains.annotations.NotNull;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -41,16 +40,16 @@ public class CartItem {
 
     private LocalDate createdDate;
 
-    //public void setUser(User user) {
-    //    this.user = user;
-    //}
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
     public int getQuantity() {
         return this.quantity;
+    }
+
+    public Cart getCart() {
+        return this.cart;
     }
 
     public void setCart(Cart cart) {
@@ -61,17 +60,11 @@ public class CartItem {
         return this.product;
     }
 
-    //public User getUser() {
-    //    return this.user;
-    //}
-
     public CartItem() {};
 
-    public CartItem(User user, Product product, int quantity) {
-        //this.user =user;
+    public CartItem(Product product, int quantity) {
         this.product = product;
         this.quantity = quantity;
-        //this.cart = cart;
         this.createdDate = LocalDate.now();
     }
 }

@@ -1,5 +1,6 @@
 package com.bullish.electronicStore.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
@@ -45,6 +46,18 @@ public class Cart {
     public Cart(User user) {
         this.user = user;
         //this.cartItemList = new ArrayList<>();
+    }
+
+    public void addCartItem(CartItem cartItem) {
+        if (!cartItems.contains(cartItem)) {
+            cartItems.add(cartItem);
+        }
+    }
+
+    public void removeCartItem(CartItem cartItem) {
+        if (cartItems.contains(cartItem)) {
+            cartItems.remove(cartItem);
+        }
     }
 
 }

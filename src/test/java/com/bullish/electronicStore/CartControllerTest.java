@@ -43,7 +43,7 @@ public class CartControllerTest {
         User user = userService.findUserByEmail("alice@bullish.com");
         Product product = productService.findByProductCode("fan1");
 
-        cartService.addToCart(user, new CartItem(user, product, 0));
+     //   cartService.addToCart(user, new CartItem(product, 0));
     }
 
     @Test
@@ -54,11 +54,15 @@ public class CartControllerTest {
         User user = userService.findUserByEmail("alice@bullish.com");
         Product product = productService.findByProductCode("fan1");
 
-        cartService.addToCart(user, new CartItem(user, product, 0));
-        cartService.addToCart(user, new CartItem(user, product, 5));
+     ////   cartService.addToCart(user, new CartItem(product, 0));
+     ////   cartService.addToCart(user, new CartItem(product, 5));
 
         Product product2 = productService.findByProductCode("cooker1");
-        cartService.addToCart(user, new CartItem(user, product2, 10));
+//        cartService.addToCart(user, new CartItem(product2, 10));
+
+
+  //      cartService.updateCart(1, 2, 7);
+    //    cartService.updateCart(1, 2, 0);
     }
 
     @Test

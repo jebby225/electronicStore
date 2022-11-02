@@ -1,13 +1,12 @@
 package com.bullish.electronicStore.service;
 
-import com.bullish.electronicStore.entity.Cart;
-import com.bullish.electronicStore.entity.CartItem;
-import com.bullish.electronicStore.entity.Product;
-import com.bullish.electronicStore.entity.User;
+import com.bullish.electronicStore.entity.*;
 import com.bullish.electronicStore.enums.UserRoles;
+import com.bullish.electronicStore.exception.CustomException;
 import com.bullish.electronicStore.repository.CartItemRepository;
 import com.bullish.electronicStore.repository.CartRepository;
 import com.bullish.electronicStore.repository.ProductRepository;
+import com.bullish.electronicStore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,11 +22,30 @@ public class CartService {
     @Autowired
     private CartItemRepository cartItemRepository;
 
-    public Cart listCarts(User user) {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    public Cart listCarts(int userId) {
+        User user = userRepository.findById(userId);
+        if(user == null)
+            throw new CustomException("User does not exist");
+
         return cartRepository.findByUser(user);
     }
 
-    public Cart addToCart(User user, CartItem newCartItem) {
+    public Cart addToCart(int userId, int productId, int quantity) {
+        User user = userRepository.findById(userId);
+        Product product = productRepository.findById(productId);
+
+        if(product == null)
+            throw new CustomException("Product does not exist");
+        if(user == null)
+            throw new CustomException("User does not exist");
+
+        CartItem newCartItem = new CartItem(product, quantity);
 
         Cart cart = cartRepository.findByUser(user);
 
@@ -55,30 +73,62 @@ public class CartService {
                 cartItemRepository.save(findCartItem);
             } else {
                 newCartItem.setCart(cart);
+                cart.addCartItem(newCartItem);
 
-                Set<CartItem> cartItemSet = cart.getCartItems();
-                cartItemSet.add(newCartItem);
-                cart.setCartItems(cartItemSet);
-
-                CartItem saveCartItem = cartItemRepository.save(newCartItem);
+                cartRepository.save(cart);
             }
+        }
+        return cart;
+    }
 
+    public Cart updateCart(int userId, int cartItemId, int newQuantity) {
+        User user = userRepository.findById(userId);
+        CartItem cartItem = cartItemRepository.findById(cartItemId);
 
-/*
-            List<CartItem> findItems = cart.getCartItems()
-                    .stream()
-                    .filter(p -> p.getProduct().getCode() == newCartItem.getProduct().getCode())
-                    .collect(Collectors.toList());
+        if(cartItem == null)
+            throw new CustomException("cart item does not exist");
+        if(user == null)
+            throw new CustomException("user does not exist");
 
-            if(findItems.isEmpty()) {
-                cart.getCartItems().add(newCartItem);
-            } else {
-                findItems.get(0).setQuantity(newCartItem.getQuantity());
-            }
-            cartRepository.save(cart);*/
+        cartItem.setQuantity(newQuantity);
+        cartItemRepository.save(cartItem);
+
+        if(newQuantity <= 0) {
+            Cart cart = cartItem.getCart();
+            cart.removeCartItem(cartItem);
+            cartRepository.save(cart);
         }
 
-        return cart;
+        return cartItem.getCart();
+    }
+
+    public CheckoutReceipt checkoutCart(int userId) {
+        User user = userRepository.findById(userId);
+        Cart cart = cartRepository.findByUser(user);
+
+        if(cart == null)
+            throw new CustomException("cart does not exist");
+        if(user == null)
+            throw new CustomException("user does not exist");
+
+
+        List<CheckoutItem> checkoutItems = new ArrayList<>();
+
+        for (CartItem cartItem : cart.getCartItems()) {
+            checkoutItems.add(new CheckoutItem(
+                    cartItem.getProduct().getCode(),
+                    cartItem.getProduct().getName(),
+                    cartItem.getQuantity(),
+                    cartItem.getProduct().getPrice(),
+                    ""));
+        }
+
+        CheckoutReceipt checkoutReceipt = new CheckoutReceipt(checkoutItems);
+        checkoutReceipt.setTotalDiscount(0.0);
+        checkoutReceipt.setTotalFinalPrice(0.0);
+        checkoutReceipt.setTotalOriginalPrice(0.0);
+
+        return checkoutReceipt;
     }
 
 }

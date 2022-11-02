@@ -8,10 +8,7 @@ import com.bullish.electronicStore.entity.User;
 import com.bullish.electronicStore.service.CartService;
 import com.bullish.electronicStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,17 +20,21 @@ public class CartCotroller {
     CartService cartService;
 
     @GetMapping("/list")
-    public Cart getCarts(@RequestBody User user) {
-        return cartService.listCarts(user);
+    public Cart getCart(@RequestParam(value = "userId") int userId) {
+        return cartService.listCarts(userId);
     }
 
-    @GetMapping("/addItem")
-    public Cart getCarts(@RequestBody CartItem cartItem, @RequestBody User user) {
-        return cartService.addToCart(user, cartItem);
+    @PostMapping("/addItem")
+    public Cart addItemtoCart(@RequestParam(value = "userId") int userId,
+                             @RequestParam(value = "productId") int productId,
+                             @RequestParam(value = "quantity") int quantity) {
+        return cartService.addToCart(userId, productId, quantity);
     }
 
-
-
-
-
+    @PostMapping("/updateItem")
+    public Cart updateCart(@RequestParam(value = "userId") int userId,
+                         @RequestParam(value = "productId") int productId,
+                         @RequestParam(value = "newQuantity") int quantity) {
+        return cartService.updateCart(userId, productId, quantity);
+    }
 }
