@@ -6,6 +6,7 @@ import com.bullish.electronicStore.model.ProductDiscount;
 import com.bullish.electronicStore.repository.ProductRepository;
 import com.bullish.electronicStore.service.ProductService;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -24,13 +25,17 @@ public class ProductServiceTest {
     @Autowired
     private ProductService productService;
 
-    Product cm1 = new Product("cm1", "coffee Machine", "coffeemachine_1.jpg", 100.0, "coffee machine #1");
-    Product cm2 = new Product("cm2", "coffee Machine", "coffeemachine_2.jpg", 100.0, "coffee machine #2");
+    Product product1 = new Product("cm1", "coffee Machine", "coffeemachine_1.jpg", 100.0, "coffee machine #1");
+    Product product2 = new Product("cm2", "coffee Machine", "coffeemachine_2.jpg", 100.0, "coffee machine #2");
 
+    @BeforeEach
+    public void init() {
+        productRepository.deleteAll();
+    }
     @Test
     public void testCanAddNewProducts_exceptionWhenAddExisting() {
-        productService.addProduct(cm1);
-        productService.addProduct(cm2);
+        productService.addProduct(product1);
+        productService.addProduct(product2);
         List<Product> products = productRepository.findAll();
         Assertions
                 .assertThat(products)
@@ -44,12 +49,11 @@ public class ProductServiceTest {
             productService.addProduct(new Product("cm2", "coffee Machine33", "coffeemachine_2.jpg", 100.0, "coffee machine #2"));
         }).isInstanceOf(DataIntegrityViolationException.class)
                 .hasMessageContaining("could not execute statement");
-
     }
 
     @Test
     public void testAddAndUpdateDiscountCode() {
-        productService.addProduct(cm1);
+        productService.addProduct(product1);
         Product product = productRepository.findByCode("cm1");
         Assertions
                 .assertThat(product)
@@ -79,9 +83,8 @@ public class ProductServiceTest {
 
     @Test
     public void testDeleteProducts_ExistingProduct() {
-
         // Add a new product
-        productService.addProduct(cm1);
+        productService.addProduct(product1);
         List<Product> products = productRepository.findAll();
         Assertions
                 .assertThat(products)

@@ -7,6 +7,7 @@ import com.bullish.electronicStore.repository.ProductRepository;
 import com.bullish.electronicStore.repository.UserRepository;
 import com.bullish.electronicStore.service.CartService;
 import org.assertj.core.api.Assertions;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,27 +30,37 @@ public class CartServiceTest {
     Product product1 = new Product("cm1", "Coffee Machine", "coffeemachine.jpg", 200.0, "coffee machine");
     Product product2 = new Product("b2", "Blender", "blender.jpg", 120.0, "juice blender");
 
+    int user1_id;
+    int product1_id;
+    int product2_id;
+
     @BeforeEach
     public void init() {
-        userRepository.save(user1);
-        userRepository.save(user2);
+        userRepository.deleteAll();
+        productRepository.deleteAll();
 
-        productRepository.save(product1);
-        productRepository.save(product2);
+        user1 = userRepository.save(user1);
+        user2 = userRepository.save(user2);
+        user1_id = user1.getId();
+
+        product1 = productRepository.save(product1);
+        product2 = productRepository.save(product2);
+        product1_id = product1.getId();
+        product2_id = product2.getId();
     }
 
     @Test
     public void testUpdateCartService_AssertingOrderItemLists() {
 
         // Start with empty cart (with no order items)
-        Cart cart = userRepository.findById(1).getCart();
+        Cart cart = userRepository.findById(user1_id).getCart();
         Assertions
                 .assertThat(cart)
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("orderItems", new HashMap<>());
 
         // Add 4 blenders to basket
-        cart = cartService.updateCart(1, 2, 4);
+        cart = cartService.updateCart(user1_id, product2_id, 4);
         Assertions
                 .assertThat(cart.getOrderItems())
                 .isNotNull();
@@ -57,10 +68,10 @@ public class CartServiceTest {
         assertThat(cart.getOrderItems())
                 .isNotEmpty()
                 .hasSize(1)
-                .containsKey(2)
-                .doesNotContainKeys(1);
+                .containsKey(product2_id)
+                .doesNotContainKeys(product1_id);
 
-        assertThat(cart.getOrderItems().get(2))
+        assertThat(cart.getOrderItems().get(product2_id))
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("productCode", "b2")
                 .hasFieldOrPropertyWithValue("productName", "Blender")
@@ -68,7 +79,7 @@ public class CartServiceTest {
                 .hasFieldOrPropertyWithValue("price", 120.0);
 
         // Add 2 coffee machine to basket
-        cart = cartService.updateCart(1, 1, 2);
+        cart = cartService.updateCart(user1_id, product1_id, 2);
         Assertions
                 .assertThat(cart.getOrderItems())
                 .isNotNull();
@@ -76,10 +87,10 @@ public class CartServiceTest {
         assertThat(cart.getOrderItems())
                 .isNotEmpty()
                 .hasSize(2)
-                .containsKey(1)
-                .containsKey(2);
+                .containsKey(product1_id)
+                .containsKey(product2_id);
 
-        assertThat(cart.getOrderItems().get(1))
+        assertThat(cart.getOrderItems().get(product1_id))
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("productCode", "cm1")
                 .hasFieldOrPropertyWithValue("productName", "Coffee Machine")
@@ -87,26 +98,26 @@ public class CartServiceTest {
                 .hasFieldOrPropertyWithValue("price", 200.0);
 
         // Remove 1 blender from basket -> now only 3 blender in basket
-        cart = cartService.updateCart(1, 2, 3);
-        assertThat(cart.getOrderItems().get(2))
+        cart = cartService.updateCart(user1_id, product2_id, 3);
+        assertThat(cart.getOrderItems().get(product2_id))
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("productCode", "b2")
                 .hasFieldOrPropertyWithValue("quantity", 3);
 
         // Remove all coffee machine from basket, now only one order item (blender) left in basket
-        cart = cartService.updateCart(1, 1, 0);
+        cart = cartService.updateCart(user1_id, product1_id, 0);
         assertThat(cart.getOrderItems())
                 .isNotEmpty()
                 .hasSize(1)
-                .containsKey(2)
-                .doesNotContainKeys(1);
+                .containsKey(product2_id)
+                .doesNotContainKeys(product1_id);
     }
 
     @Test
     public void testUpdateCartService_AssertingPrices() {
 
         // Start with empty cart (with no order items)
-        Cart cart = userRepository.findById(1).getCart();
+        Cart cart = userRepository.findById(user1_id).getCart();
         Assertions
                 .assertThat(cart)
                 .isNotNull()
@@ -116,8 +127,8 @@ public class CartServiceTest {
                 .hasFieldOrPropertyWithValue("totalFinalPrice", 0.0);
 
         // Add 4 blenders to basket with no discount
-        cart = cartService.updateCart(1, 2, 4);
-             assertThat(cart.getOrderItems().get(2))
+        cart = cartService.updateCart(user1_id, product2_id, 4);
+             assertThat(cart.getOrderItems().get(product2_id))
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("productCode", "b2")
                 .hasFieldOrPropertyWithValue("appliedDiscount", null)
@@ -130,8 +141,8 @@ public class CartServiceTest {
                 .hasFieldOrPropertyWithValue("totalFinalPrice", 480.0);
 
         // Add 1 coffee machine to basket with no discount
-        cart = cartService.updateCart(1, 1, 1);
-        assertThat(cart.getOrderItems().get(1))
+        cart = cartService.updateCart(user1_id, product1_id, 1);
+        assertThat(cart.getOrderItems().get(product1_id))
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("productCode", "cm1")
                 .hasFieldOrPropertyWithValue("appliedDiscount", null)
@@ -149,8 +160,8 @@ public class CartServiceTest {
         productRepository.save(product1);
 
         // Add 2 more coffee machine to basket with discount
-        cart = cartService.updateCart(1, 1, 3);
-        assertThat(cart.getOrderItems().get(1))
+        cart = cartService.updateCart(user1_id, product1_id, 3);
+        assertThat(cart.getOrderItems().get(product1_id))
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("productCode", "cm1")
                 .hasFieldOrPropertyWithValue("appliedDiscount", "buy 2 get 1 free")
@@ -162,8 +173,8 @@ public class CartServiceTest {
                 .hasFieldOrPropertyWithValue("totalFinalPrice", 880.0);
 
         // Remove 1 coffee machine from basket - now the buy 2 get 1 free discount not applicable
-        cart = cartService.updateCart(1, 1, 2);
-        assertThat(cart.getOrderItems().get(1))
+        cart = cartService.updateCart(user1_id, product1_id, 2);
+        assertThat(cart.getOrderItems().get(product1_id))
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("productCode", "cm1")
                 .hasFieldOrPropertyWithValue("appliedDiscount", "buy 2 get 1 free")
@@ -178,7 +189,7 @@ public class CartServiceTest {
     @Test
     public void testUpdateCart_withUserThatDoesNotExist() {
         assertThatThrownBy(() -> {
-            cartService.updateCart(123, 1, 0);
+            cartService.updateCart(123, product1_id, 0);
         }).isInstanceOf(CustomException.class)
                 .hasMessageContaining("User 123 does not exist");
     }
@@ -186,14 +197,14 @@ public class CartServiceTest {
     @Test
     public void testUpdateCart_withProductThatDoesNotExist() {
         assertThatThrownBy(() -> {
-            cartService.updateCart(1, 123, 0);
+            cartService.updateCart(user1_id, 123, 0);
         }).isInstanceOf(CustomException.class)
                 .hasMessageContaining("Product 123 does not exist");
     }
 
     @Test
     public void testUpdateCart_removeProductThatIsNotInCart() {
-        Cart cart = cartService.updateCart(1, 1, 0);
+        Cart cart = cartService.updateCart(user1_id, product1_id, 0);
         Assertions
                 .assertThat(cart)
                 .isNotNull()
@@ -202,13 +213,13 @@ public class CartServiceTest {
 
     @Test
     public void testUpdateCart_withNegativeQuantity() {
-        Cart cart = cartService.updateCart(1, 1, 4);
+        Cart cart = cartService.updateCart(user1_id, product1_id, 4);
         assertThat(cart.getOrderItems())
                 .isNotEmpty()
                 .hasSize(1);
 
         // update with negative quantity -> will remove all of this product from basket
-        cart = cartService.updateCart(1, 1, -12);
+        cart = cartService.updateCart(user1_id, product1_id, -12);
         assertThat(cart.getOrderItems())
                 .isEmpty();
     }
