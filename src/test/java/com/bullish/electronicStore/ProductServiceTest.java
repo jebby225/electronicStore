@@ -1,5 +1,7 @@
 package com.bullish.electronicStore;
 
+import com.bullish.electronicStore.enums.DiscountAmountUnit;
+import com.bullish.electronicStore.enums.DiscountType;
 import com.bullish.electronicStore.exception.CustomException;
 import com.bullish.electronicStore.model.Product;
 import com.bullish.electronicStore.model.ProductDiscount;
@@ -60,13 +62,13 @@ public class ProductServiceTest {
                 .isNotNull();
 
         // Apply discount code
-        product = productService.addProductDiscount(product.getId(), new ProductDiscount(90.0, true, 2, 1, "buy 2 get next 1 10% off"));
+        product = productService.addProductDiscount(product.getId(), new ProductDiscount(DiscountType.BUY_X_GET_Y_WITH_Z_DISCOUNT, 2, 1, 90.0, DiscountAmountUnit.PERCENT));
         Assertions
                 .assertThat(product.getProductDiscount())
                 .isNotNull();
 
         // Update discount code
-        product = productService.addProductDiscount(product.getId(), new ProductDiscount(80.0, true, 2, 1, "buy 2 get next 1 10% off"));
+        product = productService.addProductDiscount(product.getId(), new ProductDiscount(DiscountType.BUY_X_GET_Y_WITH_Z_DISCOUNT, 2, 1, 80.0, DiscountAmountUnit.PERCENT));
         Assertions
                 .assertThat(product.getProductDiscount())
                 .hasFieldOrPropertyWithValue("discountAmount", 80.0);

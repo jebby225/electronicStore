@@ -34,7 +34,6 @@ public class ProductService {
         return productRepository.save(p);
     }
 
-    @Transactional
     public void deleteProductById(int productId) {
         if(!productRepository.existsById(productId))
             throw new CustomException(String.format("Product %s does not exist", productId));

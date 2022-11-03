@@ -3,6 +3,7 @@ package com.bullish.electronicStore.model;
 import com.bullish.electronicStore.converter.CartConverter;
 import com.bullish.electronicStore.converter.ProductDiscountConverter;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Product {
 
     @Id
@@ -31,8 +33,6 @@ public class Product {
     @Convert(converter = ProductDiscountConverter.class)
     private ProductDiscount productDiscount;
 
-    Product() {}
-
     public Product(String code, String name, String imageURL, Double price, String description) {
         super();
         this.code = code;
@@ -41,17 +41,4 @@ public class Product {
         this.price = price;
         this.description = description;
     }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", imageURL='" + imageURL + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                '}';
-    }
-
 }

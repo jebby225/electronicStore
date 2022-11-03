@@ -30,7 +30,7 @@ public class ProductController {
         productService.deleteProductById(id);
     }
 
-    @PatchMapping("/{id}")
+    @PostMapping("/discount/{id}")
     public void applyDiscount(@PathVariable int id, @RequestBody ProductDiscount productDiscount) {
         productService.addProductDiscount(id, productDiscount);
     }

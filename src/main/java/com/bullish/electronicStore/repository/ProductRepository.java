@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     void deleteByCode(String code);
     Product findByCode(String code);
-
     Product findById(int id);
 }

@@ -1,5 +1,7 @@
 package com.bullish.electronicStore;
 
+import com.bullish.electronicStore.enums.DiscountAmountUnit;
+import com.bullish.electronicStore.enums.DiscountType;
 import com.bullish.electronicStore.model.OrderItem;
 import com.bullish.electronicStore.model.Product;
 import com.bullish.electronicStore.model.ProductDiscount;
@@ -16,57 +18,101 @@ public class ProductDiscountServiceTest {
     @Autowired
     private ProductDiscountService productDiscountService;
 
-    Product product = new Product("cm1", "coffee Machine", "coffeemachine_1.jpg", 100.0, "coffee machine");
+    Product product = new Product("cm1", "coffee Machine", "coffeemachine_1.jpg", 120.0, "coffee machine");
     OrderItem orderItem = new OrderItem(product.getCode(), product.getName(), 10, product.getPrice());
+
+    /*
+     * All 50% off                ProductDiscount(DiscountType.BUY_ANY_WITH_TOTAL_DISCOUNT, 50.0, DiscountAmountUnit.PERCENT)
+     * Total 5 off                ProductDiscount(DiscountType.BUY_ANY_WITH_TOTAL_DISCOUNT, 5.0, DiscountAmountUnit.AMOUNT)
+     * Buy 1 get 3 20% off        ProductDiscount(DiscountType.BUY_X_GET_Y_WITH_Z_DISCOUNT, 1, 3, 20.0, DiscountAmountUnit.PERCENT)
+     * Buy 2 get 1 free           ProductDiscount(DiscountType.BUY_X_GET_Y_WITH_Z_DISCOUNT, 2, 1, 100.0, DiscountAmountUnit.PERCENT)
+     * Each $10 off               ProductDiscount(DiscountType.BUY_ANY_WITH_UNIT_DISCOUNT, 10.0, DiscountAmountUnit.AMOUNT);
+     * Buy 3 get $10 off          ProductDiscount(DiscountType.BUY_X_WITH_Z_DISCOUNT, 3, 10.0, DiscountAmountUnit.AMOUNT);
+     * Buy 3 get 10% off          ProductDiscount(DiscountType.BUY_X_WITH_Z_DISCOUNT, 3, 10.0, DiscountAmountUnit.PERCENT);
+     * Buy every $100 $10 off     ProductDiscount(DiscountType.BUY_AMOUNT_WITH_DISCOUNT, 100.0, 10.0, DiscountAmountUnit.AMOUNT);
+     * Buy over $100 10% off      ProductDiscount(DiscountType.BUY_AMOUNT_WITH_DISCOUNT, 100.0, 10.0, DiscountAmountUnit.PERCENT);
+     */
 
     @Test
     public void testCalculateTotalProductDiscount_all50PercentOff() {
-        ProductDiscount pdtDiscount = new ProductDiscount(50.0, true, 0, 1, "get 50% off all");
+        ProductDiscount pdtDiscount = new ProductDiscount(DiscountType.BUY_ANY_WITH_TOTAL_DISCOUNT, 50.0, DiscountAmountUnit.PERCENT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
         assertEquals(discount, 10 * orderItem.getPrice() * 0.5);
+    }
 
+    @Test
+    public void testCalculateTotalProductDiscount_total5AmountOff() {
+        ProductDiscount pdtDiscount = new ProductDiscount(DiscountType.BUY_ANY_WITH_TOTAL_DISCOUNT, 5.0, DiscountAmountUnit.AMOUNT);
+        double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
+
+        assertEquals(discount, pdtDiscount.getDiscountAmount());
     }
 
     @Test
     public void testCalculateTotalProductDiscount_buy1Get2With20PercentOff() {
-        ProductDiscount pdtDiscount = new ProductDiscount(20.0, true, 1, 3, "buy 1 get next 3 20% off");
+        ProductDiscount pdtDiscount = new ProductDiscount(
+                DiscountType.BUY_X_GET_Y_WITH_Z_DISCOUNT,
+                1, 3, 20.0, DiscountAmountUnit.PERCENT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
         assertEquals(discount, 7 * orderItem.getPrice() * 0.20);
-
     }
 
     @Test
     public void testCalculateTotalProductDiscount_buy2Get1Off() {
-        ProductDiscount pdtDiscount = new ProductDiscount(100.0, true, 2, 1, "buy 2 get 1 off");
+        ProductDiscount pdtDiscount = new ProductDiscount(
+                DiscountType.BUY_X_GET_Y_WITH_Z_DISCOUNT,
+                2, 1, 100.0, DiscountAmountUnit.PERCENT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
         assertEquals(discount, 3 * orderItem.getPrice());
-
     }
 
     @Test
     public void testCalculateTotalProductDiscount_all10AmountOff() {
-        ProductDiscount pdtDiscount = new ProductDiscount(10.0, false, 0, 1, "10 off");
+        ProductDiscount pdtDiscount = new ProductDiscount(
+                DiscountType.BUY_ANY_WITH_UNIT_DISCOUNT, 10.0, DiscountAmountUnit.AMOUNT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
         assertEquals(discount, 10 * 10);
     }
 
+
+
     @Test
-    public void testCalculateTotalProductDiscount_fullSet10PercentOff() {
-        ProductDiscount pdtDiscount = new ProductDiscount(10.0, false, 10, 0, "buy 10 get 10% off");
+    public void testCalculateTotalProductDiscount_Buy3Get10AmtOffTotal() {
+        ProductDiscount pdtDiscount = new ProductDiscount(
+                DiscountType.BUY_X_WITH_Z_DISCOUNT, 3, 10.0, DiscountAmountUnit.AMOUNT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
-        assertEquals(discount, 10 * orderItem.getPrice() * 0.10);
+        assertEquals(discount, 3 * 10.0);
     }
 
     @Test
-    public void testCalculateTotalProductDiscount_1Set10PercentOff() {
-        ProductDiscount pdtDiscount = new ProductDiscount(10.0, false, 6, 0, "buy 10 get 10% off");
+    public void testCalculateTotalProductDiscount_Buy3Get10PercentOffTotal() {
+        ProductDiscount pdtDiscount = new ProductDiscount(
+                DiscountType.BUY_X_WITH_Z_DISCOUNT, 3, 10.0, DiscountAmountUnit.PERCENT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
-        assertEquals(discount, 6 * orderItem.getPrice() * 0.10);
+        assertEquals(discount, 3 * orderItem.getPrice() * 0.1);
+    }
+
+    @Test
+    public void testCalculateTotalProductDiscount_BuyEvery100_10AmountOff() {
+        ProductDiscount pdtDiscount = new ProductDiscount(
+                DiscountType.BUY_AMOUNT_WITH_DISCOUNT, 100.0, 10.0, DiscountAmountUnit.AMOUNT);
+        double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
+
+        assertEquals(discount, orderItem.getPrice() * orderItem.getQuantity() / 100.0 * 10.0);
+    }
+
+    @Test
+    public void testCalculateTotalProductDiscount_BuyOver100_10PercentOff() {
+        ProductDiscount pdtDiscount = new ProductDiscount(
+                DiscountType.BUY_AMOUNT_WITH_DISCOUNT, 100.0, 10.0, DiscountAmountUnit.PERCENT);
+        double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
+
+        assertEquals(discount, orderItem.getPrice() * orderItem.getQuantity() * 0.1);
     }
 }

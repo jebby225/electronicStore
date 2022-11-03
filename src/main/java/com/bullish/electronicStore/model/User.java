@@ -3,6 +3,7 @@ package com.bullish.electronicStore.model;
 import com.bullish.electronicStore.converter.CartConverter;
 import com.bullish.electronicStore.enums.UserRoles;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Table(name = "users")
 @Getter
 @Setter
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -30,27 +32,13 @@ public class User {
 
     @Convert(converter = CartConverter.class)
     @Lob
-    private Cart cart;
-
-
-    public User() {}
+    private Cart cart = new Cart();
 
     public User(String userName, String email, UserRoles role) {
         super();
         this.userName = userName;
         this.email = email;
         this.role = role;
-        this.cart = new Cart();
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                '}';
     }
 
 }
