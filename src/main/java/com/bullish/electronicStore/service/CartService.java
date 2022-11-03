@@ -7,8 +7,6 @@ import com.bullish.electronicStore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-
 @Service
 public class CartService {
 
@@ -24,9 +22,8 @@ public class CartService {
     public Cart listCarts(int userId) {
         User user = userRepository.findById(userId);
         if(user == null)
-            throw new CustomException("User does not exist");
-
-        return user.getCart(); // cartRepository.findByUser(user);
+            throw new CustomException(String.format("User %s does not exist", userId));
+        return user.getCart();
     }
 
     public Cart updateCart(int userId, int productId, int quantity) {
@@ -34,9 +31,9 @@ public class CartService {
         Product product = productRepository.findById(productId);
 
         if (product == null)
-            throw new CustomException("Product does not exist");
+            throw new CustomException(String.format("Product %s does not exist", productId));
         if (user == null)
-            throw new CustomException("User does not exist");
+            throw new CustomException(String.format("User %s does not exist", userId));
 
         if(quantity <= 0) {
             user.getCart().getOrderItems().remove(productId);
@@ -58,7 +55,7 @@ public class CartService {
             orderItem.setSubTotal(product.getPrice() * quantity - discount);
         }
 
-        //*** Update price ****//
+        //*** Update total price and discount ****//
         Double totalDiscount = 0.0;
         Double totalOriginalPrice = 0.0;
 

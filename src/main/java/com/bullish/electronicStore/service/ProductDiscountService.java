@@ -9,36 +9,45 @@ public class ProductDiscountService {
 
     public double calculateTotalProductDiscount(ProductDiscount pdtDiscount, OrderItem orderItem) {
         int discountSetCount = pdtDiscount.getUnitToPurchase() + pdtDiscount.getUnitWithDiscount();
-        int itemsToDiscount = (int)Math.floor(orderItem.getQuantity() / discountSetCount) * discountSetCount; // round down to get number of items meeting requirement
+        int discountSetsInOrder = (int) Math.floor(orderItem.getQuantity() / discountSetCount);
+        int itemsToDiscount = discountSetsInOrder * discountSetCount; // round down to get number of items meeting
+        // requirement
+        int unitsWithDiscount = 0;
 
-        double totalPrice = 0.0;
-        double totalDiscount = 0.0;
         if (orderItem.getQuantity() >= discountSetCount) {
             // get amounts for sets of items meeting the criteria completely
-            // (for example, if the discount is buy 2 get one 1 free and we have 10 items in cart, then below should iterate 3 times)
-            for(int i = 0; i < itemsToDiscount / discountSetCount; i++) {
-                totalPrice += pdtDiscount.getUnitToPurchase() * orderItem.getPrice();
+            // (for example, if the discount is buy 2 get one 1 free and we have 10 items in
+            // cart, then below should multiply 3 times)
 
-                if(pdtDiscount.isPercent())
-                    totalDiscount += ((orderItem.getPrice() * pdtDiscount.getDiscountAmount()) / 100) * pdtDiscount.getUnitWithDiscount();
-                else
-                    totalDiscount += pdtDiscount.getDiscountAmount() * pdtDiscount.getUnitWithDiscount();
+            // if pdtDiscount.UnitWithDiscount, we are applying a rule that discount will
+            // apply to the full set
+            // if the criteria is met
+            // ie.
+            // buy 5 get 20% off
+            // if set has 5 items, apply 20% off to all 5 items
+            if (pdtDiscount.getUnitWithDiscount() == 0) {
+                unitsWithDiscount += pdtDiscount.getUnitToPurchase() * discountSetsInOrder;
+            } else {
+                unitsWithDiscount += pdtDiscount.getUnitWithDiscount() * discountSetsInOrder;
             }
         }
 
         // adding the remainders
         int remainingItemCount = orderItem.getQuantity() - itemsToDiscount;
-        if (remainingItemCount > 0) {
-            if(pdtDiscount.getUnitToPurchase() < remainingItemCount) {
-                remainingItemCount -= pdtDiscount.getUnitToPurchase();
 
-                if (pdtDiscount.isPercent())
-                    totalDiscount += ((orderItem.getPrice() * pdtDiscount.getDiscountAmount()) / 100) * remainingItemCount;
-                else
-                    totalDiscount += pdtDiscount.getDiscountAmount() * remainingItemCount;
-            }
+        // if pdtDiscount.getUnitWithDiscount() > 0, it means discounts only applied to
+        // full set,
+        // therefore we don't need to worry about leftovers
+        if (remainingItemCount > 0 && pdtDiscount.getUnitWithDiscount() > 0
+                && pdtDiscount.getUnitToPurchase() < remainingItemCount) {
+            unitsWithDiscount += remainingItemCount - pdtDiscount.getUnitToPurchase();
         }
-        return totalDiscount;
+
+        if (pdtDiscount.isPercent())
+            return ((orderItem.getPrice() * pdtDiscount.getDiscountAmount()) / 100)
+                    * unitsWithDiscount;
+        else
+            return pdtDiscount.getDiscountAmount() * unitsWithDiscount;
     }
 
 

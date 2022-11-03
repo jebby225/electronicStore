@@ -3,7 +3,6 @@ package com.bullish.electronicStore.controller;
 import com.bullish.electronicStore.model.Product;
 import com.bullish.electronicStore.model.ProductDiscount;
 import com.bullish.electronicStore.service.ProductService;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +17,7 @@ public class ProductController {
 
     @GetMapping
     public List<Product> getProducts() {
-        List<Product> body = productService.listProducts();
-        String json = new Gson().toJson(body);
-
-        System.out.println("body" + json);
-        return body;
+        return productService.listProducts();
     }
 
     @PostMapping
@@ -30,9 +25,9 @@ public class ProductController {
         return productService.addProduct(product);
     }
 
-    @DeleteMapping("/{code}")
-    public void deleteProduct(@PathVariable String code){
-        productService.deleteProductByCode(code);
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable int id){
+        productService.deleteProductById(id);
     }
 
     @PatchMapping("/{id}")

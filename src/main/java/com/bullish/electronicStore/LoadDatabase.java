@@ -25,7 +25,7 @@ class LoadDatabase {
 
          //   log.info("Preloading " + productRepository.save(product));
          //   log.info("Preloading " + productRepository.save(new Product("cooker1", "cooker", "burglar", 4., "abx")));
-            log.info("Preloading " + userRepository.save(user));
+         //   log.info("Preloading " + userRepository.save(user));
 
         };
     }

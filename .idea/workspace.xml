@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="561a6df3-c700-4133-b809-9addbd0f69f4" name="Changes" comment="commit with json">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/UserServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/LoadDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/LoadDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/CartControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/CartServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/UserControllerTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,11 +53,6 @@
                 <item name="electronicStore" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="electronicStore" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -101,21 +108,8 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.ProductControllerTest.testGetAllProducts">
-    <configuration name="ElectronicStoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ElectronicStoreApplication" />
-      <module name="electronicStore.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bullish.electronicStore.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductControllerTest.testAddDiscountCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CartServiceTest.testUpdateCartService_AssertingPrices">
+    <configuration name="CartServiceTest.testUpdateCartService_AssertingPrices" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="electronicStore.test" />
       <extension name="coverage">
         <pattern>
@@ -124,14 +118,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bullish.electronicStore" />
-      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ProductControllerTest" />
-      <option name="METHOD_NAME" value="testAddDiscountCode" />
+      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.CartServiceTest" />
+      <option name="METHOD_NAME" value="testUpdateCartService_AssertingPrices" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductControllerTest.testCanAddNewProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartServiceTest.testUpdateCart_removeProductThatIsNotInCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="electronicStore.test" />
       <extension name="coverage">
         <pattern>
@@ -140,14 +134,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bullish.electronicStore" />
-      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ProductControllerTest" />
-      <option name="METHOD_NAME" value="testCanAddNewProduct" />
+      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.CartServiceTest" />
+      <option name="METHOD_NAME" value="testUpdateCart_removeProductThatIsNotInCart" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductControllerTest.testCannotAddProductsWithExistingCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartServiceTest.testUpdateCart_withNegativeQuantity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="electronicStore.test" />
       <extension name="coverage">
         <pattern>
@@ -156,14 +150,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bullish.electronicStore" />
-      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ProductControllerTest" />
-      <option name="METHOD_NAME" value="testCannotAddProductsWithExistingCode" />
+      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.CartServiceTest" />
+      <option name="METHOD_NAME" value="testUpdateCart_withNegativeQuantity" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductControllerTest.testGetAllProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductServiceTest.testDeleteProducts_ExistingProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="electronicStore.test" />
       <extension name="coverage">
         <pattern>
@@ -172,8 +166,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bullish.electronicStore" />
-      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ProductControllerTest" />
-      <option name="METHOD_NAME" value="testGetAllProducts" />
+      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ProductServiceTest" />
+      <option name="METHOD_NAME" value="testDeleteProducts_ExistingProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceTest.testDeleteProducts_NonExistingProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="electronicStore.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bullish.electronicStore.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bullish.electronicStore" />
+      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ProductServiceTest" />
+      <option name="METHOD_NAME" value="testDeleteProducts_NonExistingProduct" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -181,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductControllerTest.testGetAllProducts" />
-        <item itemvalue="JUnit.ProductControllerTest.testAddDiscountCode" />
-        <item itemvalue="Application.ElectronicStoreApplication" />
-        <item itemvalue="JUnit.ProductControllerTest.testCannotAddProductsWithExistingCode" />
-        <item itemvalue="JUnit.ProductControllerTest.testCanAddNewProduct" />
+        <item itemvalue="JUnit.CartServiceTest.testUpdateCartService_AssertingPrices" />
+        <item itemvalue="JUnit.ProductServiceTest.testDeleteProducts_ExistingProduct" />
+        <item itemvalue="JUnit.ProductServiceTest.testDeleteProducts_NonExistingProduct" />
+        <item itemvalue="JUnit.CartServiceTest.testUpdateCart_withNegativeQuantity" />
+        <item itemvalue="JUnit.CartServiceTest.testUpdateCart_removeProductThatIsNotInCart" />
       </list>
     </recent_temporary>
   </component>
@@ -240,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667417770733</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="commit with json">
+      <created>1667440893150</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667440893150</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,44 +280,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductControllerTest.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductControllerTest.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductControllerTest.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductControllerTest.java</url>
-          <line>90</line>
+          <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductServiceTest.java</url>
+          <line>109</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/CartControllerTest.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/CartControllerTest.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/CartController.java</url>
@@ -308,29 +290,14 @@
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java</url>
-          <line>30</line>
+          <line>29</line>
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="75" />
+          <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductServiceTest.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -342,6 +309,8 @@
         <watch expression="cartRepository" />
         <watch expression="cart.getCartItems()" />
         <watch expression="cartItemRepository.findAll()" language="JAVA" />
+        <watch expression="productRepository.findAll()" />
+        <watch expression="cart.orderItems == new HashMap&lt;&gt;()" language="JAVA" />
       </configuration>
       <configuration name="Application">
         <watch expression="productRepository.findAll()" />
