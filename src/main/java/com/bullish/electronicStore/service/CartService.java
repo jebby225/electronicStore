@@ -7,6 +7,8 @@ import com.bullish.electronicStore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class CartService {
 
@@ -23,7 +25,37 @@ public class CartService {
         User user = userRepository.findById(userId);
         if(user == null)
             throw new CustomException(String.format("User %s does not exist", userId));
-        return user.getCart();
+
+        // Need to refresh price / discount for case when admin applied discount code
+        // after customers have add product to cart
+        Cart cart = user.getCart();
+
+
+        Double totalDiscount = 0.0;
+        Double totalOriginalPrice = 0.0;
+
+        for(Map.Entry<Integer, OrderItem> kvp : cart.getOrderItems().entrySet()) {
+            Integer productId = kvp.getKey();
+            OrderItem orderItem = kvp.getValue();
+            Product product = productRepository.findById(productId).get();
+
+
+            Double discount = 0.0;
+            if (product.getProductDiscount() != null) {
+                orderItem.setAppliedDiscount(product.getProductDiscount().getDescription());
+                discount = productDiscountService.calculateTotalProductDiscount(product.getProductDiscount(), orderItem);
+                orderItem.setDiscount(discount);
+                totalDiscount += discount;
+            }
+            totalOriginalPrice += orderItem.getPrice() * orderItem.getQuantity();
+        }
+
+        //*** Update total price and discount ****/
+        cart.setTotalDiscount(totalDiscount);
+        cart.setTotalOriginalPrice(totalOriginalPrice);
+        cart.setTotalFinalPrice(totalOriginalPrice - totalDiscount);
+
+        return cart;
     }
 
     public Cart updateCart(int userId, int productId, int quantity) {
@@ -71,5 +103,6 @@ public class CartService {
         userRepository.save(user);
         return user.getCart();
     }
+
 
 }

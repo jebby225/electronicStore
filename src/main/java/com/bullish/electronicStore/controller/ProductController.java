@@ -1,21 +1,14 @@
 package com.bullish.electronicStore.controller;
 
-import com.bullish.electronicStore.enums.UserRoles;
 import com.bullish.electronicStore.model.Product;
 import com.bullish.electronicStore.model.ProductDiscount;
-import com.bullish.electronicStore.model.User;
 import com.bullish.electronicStore.service.ProductService;
 import com.bullish.electronicStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-
 
 @RestController
 @RequestMapping(path="/api/products", produces="application/json")

@@ -50,14 +50,14 @@ public class ProductDiscountService {
 
         // if pdtDiscount.getUnitWithDiscount() > 0, it means discounts only applied to full set;
         // therefore we don't need to worry about leftovers
-        if (remainingItemCount > 0 && pdtDiscount.getUnitWithDiscount() > 0
-                && pdtDiscount.getPurchaseUnit() < remainingItemCount) {
+        if (remainingItemCount > 0
+            // && pdtDiscount.getUnitWithDiscount() > 0
+            && pdtDiscount.getPurchaseUnit() < remainingItemCount) {
             unitsWithDiscount += remainingItemCount - pdtDiscount.getPurchaseUnit();
         }
 
         if (pdtDiscount.getDiscountAmountUnit() == DiscountAmountUnit.PERCENT)
-            return ((orderItem.getPrice() * pdtDiscount.getDiscountAmount()) / 100)
-                    * unitsWithDiscount;
+            return ((orderItem.getPrice() * pdtDiscount.getDiscountAmount()) / 100) * unitsWithDiscount;
         else
             return pdtDiscount.getDiscountAmount() * unitsWithDiscount;
     }
@@ -84,7 +84,6 @@ public class ProductDiscountService {
             return pdtDiscount.getDiscountAmount() * discountSetsInOrder;
         }
     }
-
     private double calculateTotalProductDiscount_buy_any_with_discount(ProductDiscount pdtDiscount, OrderItem orderItem) {
         if (pdtDiscount.getDiscountAmountUnit() == DiscountAmountUnit.PERCENT)
             return orderItem.getPrice() * orderItem.getQuantity() * pdtDiscount.getDiscountAmount() / 100;

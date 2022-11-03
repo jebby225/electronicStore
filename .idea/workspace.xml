@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="561a6df3-c700-4133-b809-9addbd0f69f4" name="Changes" comment="commit" />
+    <list default="true" id="561a6df3-c700-4133-b809-9addbd0f69f4" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/ElectronicStoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/ElectronicStoreApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/common/ApiResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/enums/DiscountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/enums/DiscountType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/ProductDiscount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/ProductDiscount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductDiscountServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductDiscountServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/UserServiceTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +109,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.ElectronicStoreApplication">
+  <component name="RunManager" selected="JUnit.ProductDiscountServiceTest.testCalculateTotalProductDiscount_BuyEvery100_10AmountOff">
     <configuration name="ElectronicStoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ElectronicStoreApplication" />
       <module name="electronicStore.main" />
@@ -131,7 +147,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductDiscountServiceTest.testCalculateTotalProductDiscount_all50PercentOff" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductDiscountServiceTest.testCalculateTotalProductDiscount_BuyEvery100_10AmountOff" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="electronicStore.test" />
       <extension name="coverage">
         <pattern>
@@ -141,7 +157,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bullish.electronicStore" />
       <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ProductDiscountServiceTest" />
-      <option name="METHOD_NAME" value="testCalculateTotalProductDiscount_all50PercentOff" />
+      <option name="METHOD_NAME" value="testCalculateTotalProductDiscount_BuyEvery100_10AmountOff" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,18 +179,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.ElectronicStoreApplication" />
+      <item itemvalue="JUnit.ProductDiscountServiceTest.testCalculateTotalProductDiscount_BuyEvery100_10AmountOff" />
       <item itemvalue="JUnit.All in electronicStore.test" />
       <item itemvalue="JUnit.com.bullish.electronicStore in electronicStore.test" />
       <item itemvalue="JUnit.ProductDiscountServiceTest" />
-      <item itemvalue="JUnit.ProductDiscountServiceTest.testCalculateTotalProductDiscount_all50PercentOff" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProductDiscountServiceTest.testCalculateTotalProductDiscount_BuyEvery100_10AmountOff" />
+        <item itemvalue="JUnit.ProductDiscountServiceTest" />
         <item itemvalue="Application.ElectronicStoreApplication" />
         <item itemvalue="JUnit.All in electronicStore.test" />
         <item itemvalue="JUnit.com.bullish.electronicStore in electronicStore.test" />
-        <item itemvalue="JUnit.ProductDiscountServiceTest" />
-        <item itemvalue="JUnit.ProductDiscountServiceTest.testCalculateTotalProductDiscount_all50PercentOff" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667474300489</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="commit">
+      <created>1667474584852</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1667474584852</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -302,7 +325,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java</url>
-          <line>29</line>
+          <line>28</line>
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -316,9 +339,49 @@
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="87" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductDiscountServiceTest.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="109" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -333,6 +396,14 @@
         <watch expression="productRepository.findAll()" />
         <watch expression="cart.orderItems == new HashMap&lt;&gt;()" language="JAVA" />
         <watch expression="orderItem.getPrice() " />
+        <watch expression="pdtDiscount.getUnitWithDiscount()" />
+        <watch expression="pdtDiscount.getPurchaseUnit()" />
+        <watch expression="pdtDiscount.getDiscountType()" />
+        <watch expression="pdtDiscount.getDiscountAmountUnit()" />
+        <watch expression="Math.floor(totalPrice / pdtDiscount.getPurchaseAmount()" />
+        <watch expression="totalPrice" />
+        <watch expression="pdtDiscount.getPurchaseAmount()" />
+        <watch expression="pdtDiscount.getDiscountAmount() * discountSetsInOrder" />
       </configuration>
       <configuration name="Application">
         <watch expression="productRepository.findAll()" />

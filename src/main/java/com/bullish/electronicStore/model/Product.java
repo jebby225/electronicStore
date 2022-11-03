@@ -1,6 +1,5 @@
 package com.bullish.electronicStore.model;
 
-import com.bullish.electronicStore.converter.CartConverter;
 import com.bullish.electronicStore.converter.ProductDiscountConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

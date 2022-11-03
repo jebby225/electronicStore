@@ -100,23 +100,5 @@ public class ProductServiceTest {
                 .hasSize(0);
     }
 
-   /*  @Test
-    public void testAddNewProduct() {
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        ResponseEntity<Product> responseEntity = restTemplate.postForEntity(
-                "http://localhost:8080/api/products",
-                new HttpEntity<>(new Product("coffee1", "coffee machine", "coffeeMachine.jpg", 100.0, "capsule"), headers),
-                Product.class);
-
-        Product p = responseEntity.getBody();
-        Assertions
-                .assertThat(responseEntity.getStatusCode())
-                .isEqualByComparingTo(HttpStatus.OK);
-
-    } */
-
 }
 

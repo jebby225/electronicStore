@@ -18,8 +18,8 @@ public class ProductDiscountServiceTest {
     @Autowired
     private ProductDiscountService productDiscountService;
 
-    Product product = new Product("cm1", "coffee Machine", "coffeemachine_1.jpg", 120.0, "coffee machine");
-    OrderItem orderItem = new OrderItem(product.getCode(), product.getName(), 10, product.getPrice());
+    Product product = new Product("cm1", "coffee Machine", "coffeemachine_1.jpg", 145.0, "coffee machine");
+    OrderItem orderItem = new OrderItem(product.getCode(), product.getName(), 11, product.getPrice());
 
     /*
      * All 50% off                ProductDiscount(DiscountType.BUY_ANY_WITH_TOTAL_DISCOUNT, 50.0, DiscountAmountUnit.PERCENT)
@@ -38,7 +38,7 @@ public class ProductDiscountServiceTest {
         ProductDiscount pdtDiscount = new ProductDiscount(DiscountType.BUY_ANY_WITH_TOTAL_DISCOUNT, 50.0, DiscountAmountUnit.PERCENT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
-        assertEquals(discount, 10 * orderItem.getPrice() * 0.5);
+        assertEquals(discount, orderItem.getQuantity() * orderItem.getPrice() * 0.5);
     }
 
     @Test
@@ -50,13 +50,13 @@ public class ProductDiscountServiceTest {
     }
 
     @Test
-    public void testCalculateTotalProductDiscount_buy1Get2With20PercentOff() {
+    public void testCalculateTotalProductDiscount_buy1Get3With20PercentOff() {
         ProductDiscount pdtDiscount = new ProductDiscount(
                 DiscountType.BUY_X_GET_Y_WITH_Z_DISCOUNT,
                 1, 3, 20.0, DiscountAmountUnit.PERCENT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
-        assertEquals(discount, 7 * orderItem.getPrice() * 0.20);
+        assertEquals(discount, 8 * orderItem.getPrice() * 0.20);
     }
 
     @Test
@@ -75,7 +75,7 @@ public class ProductDiscountServiceTest {
                 DiscountType.BUY_ANY_WITH_UNIT_DISCOUNT, 10.0, DiscountAmountUnit.AMOUNT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
-        assertEquals(discount, 10 * 10);
+        assertEquals(discount, orderItem.getQuantity() * 10);
     }
 
 
@@ -104,7 +104,7 @@ public class ProductDiscountServiceTest {
                 DiscountType.BUY_AMOUNT_WITH_DISCOUNT, 100.0, 10.0, DiscountAmountUnit.AMOUNT);
         double discount = productDiscountService.calculateTotalProductDiscount(pdtDiscount, orderItem);
 
-        assertEquals(discount, orderItem.getPrice() * orderItem.getQuantity() / 100.0 * 10.0);
+        assertEquals(discount, (int) Math.floor(orderItem.getPrice() * orderItem.getQuantity() / 100.0) * 10.0);
     }
 
     @Test

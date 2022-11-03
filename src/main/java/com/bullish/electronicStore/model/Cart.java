@@ -12,7 +12,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Cart {
 
     private Map<Integer, OrderItem> orderItems = new ConcurrentHashMap<>();
-
     private Double totalOriginalPrice = 0.0;
     private Double totalDiscount = 0.0;
     private Double totalFinalPrice = 0.0;
