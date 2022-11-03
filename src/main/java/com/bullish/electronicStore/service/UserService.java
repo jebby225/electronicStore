@@ -1,5 +1,6 @@
 package com.bullish.electronicStore.service;
 
+import com.bullish.electronicStore.enums.UserRoles;
 import com.bullish.electronicStore.model.User;
 import com.bullish.electronicStore.exception.CustomException;
 import com.bullish.electronicStore.repository.UserRepository;
@@ -36,6 +37,13 @@ public class UserService {
 
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+    public boolean isAdminUser(int userId) {
+        User user = userRepository.findById(userId);
+        if(user != null && user.getRole() == UserRoles.ADMIN)
+            return true;
+        else
+            return false;
     }
 
 }

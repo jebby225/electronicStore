@@ -4,26 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="561a6df3-c700-4133-b809-9addbd0f69f4" name="Changes" comment="readme">
+    <list default="true" id="561a6df3-c700-4133-b809-9addbd0f69f4" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/CartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/converter/OrderItemsConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/enums/Status.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/ProductDiscount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/ProductDiscount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductDiscountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/CartServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/CartServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductDiscountServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductDiscountServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +98,20 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.All in electronicStore.test">
+  <component name="RunManager" selected="Application.ElectronicStoreApplication">
+    <configuration name="ElectronicStoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ElectronicStoreApplication" />
+      <module name="electronicStore.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bullish.electronicStore.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in electronicStore.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="electronicStore.test" />
       <option name="PACKAGE_NAME" value="" />
@@ -132,23 +130,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bullish.electronicStore" />
       <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ProductDiscountServiceTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductDiscountServiceTest.testCalculateTotalProductDiscount_BuyOver100_10PercentOff" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="electronicStore.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bullish.electronicStore.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bullish.electronicStore" />
-      <option name="MAIN_CLASS_NAME" value="com.bullish.electronicStore.ProductDiscountServiceTest" />
-      <option name="METHOD_NAME" value="testCalculateTotalProductDiscount_BuyOver100_10PercentOff" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -183,13 +166,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.ElectronicStoreApplication" />
+      <item itemvalue="JUnit.All in electronicStore.test" />
+      <item itemvalue="JUnit.com.bullish.electronicStore in electronicStore.test" />
+      <item itemvalue="JUnit.ProductDiscountServiceTest" />
+      <item itemvalue="JUnit.ProductDiscountServiceTest.testCalculateTotalProductDiscount_all50PercentOff" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ElectronicStoreApplication" />
         <item itemvalue="JUnit.All in electronicStore.test" />
         <item itemvalue="JUnit.com.bullish.electronicStore in electronicStore.test" />
         <item itemvalue="JUnit.ProductDiscountServiceTest" />
         <item itemvalue="JUnit.ProductDiscountServiceTest.testCalculateTotalProductDiscount_all50PercentOff" />
-        <item itemvalue="JUnit.ProductDiscountServiceTest.testCalculateTotalProductDiscount_BuyOver100_10PercentOff" />
       </list>
     </recent_temporary>
   </component>
@@ -272,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667453755846</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="commit">
+      <created>1667469235329</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1667469235329</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,11 +284,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit" />
     <MESSAGE value="commit with json" />
     <MESSAGE value="test" />
     <MESSAGE value="readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -315,6 +312,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/com/bullish/electronicStore/ProductDiscountServiceTest.java</url>
           <line>97</line>
           <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bullish/electronicStore/controller/ProductController.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -342,6 +344,7 @@
         <watch expression="user.getCart().getCartItems()" />
         <watch expression="user.getCart()" />
         <watch expression="user.getCart().getCartItems().containsKey(productId)" />
+        <watch expression="ex.getMessage()" />
       </configuration>
     </watches-manager>
   </component>
