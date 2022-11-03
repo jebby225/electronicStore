@@ -52,32 +52,24 @@ public class ProductControllerTest {
         productService.addProduct(cm1);
         Product product = productRepository.findByCode("cm1");
         Assertions
-                .assertThat(product);
+                .assertThat(product)
+                .isNotNull();
 
         product = productService.addProductDiscount(product.getId(), new ProductDiscount(90.0, true, 2, 1, "buy 2 get next 1 10% off"));
-
-  /*      Assertions.assertThat(product).
         Assertions
-                .assertThat(products)
-                .hasSize(2);
-        assertThat(products)
-                .extracting("code")
-                .contains("cm1", "cm2"); */
+                .assertThat(product.getProductDiscount())
+                .isNotNull();
     }
     @Test
     public void testGetAllProducts() {
-        ResponseEntity<Iterable<Product>> responseEntity =
-                restTemplate.exchange("http://localhost:8080/api/products/list", HttpMethod.GET,
-                        null, new ParameterizedTypeReference<Iterable<Product>>() {
-        });
-        Iterable<Product> products = responseEntity.getBody();
+        List<Product> products = productRepository.findAll();
+        productRepository.findByCode("cm1");
+        products = productRepository.findAll();
+
         Assertions
                 .assertThat(products)
-                .hasSize(2);
+                .hasSize(0);
 
-        assertThat(products)
-                .extracting("name")
-                .contains("fan", "cooker");
     }
 
     @Test
